@@ -12,7 +12,6 @@ class Process:
         return f'Signs: {signs} \nWords: {words} \nSentences: {sentences}' 
     
 object = Process("text.txt")
-
 try:
     print(object.function())
 except:
