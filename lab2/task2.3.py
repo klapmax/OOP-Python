@@ -54,6 +54,5 @@ stud14 = Student('Serhii', 'Buryakivsky', 14, [10, 6, 12, 5, 9, 9, 11, 11])
 stud15 = Student('Pavlo', 'Nedashkivsky', 15, [11, 9, 9, 12, 10, 8, 8, 8])
 
 group_x = Group(stud1, stud2, stud3, stud4, stud5, stud6, stud7, stud8, stud9, stud10, stud11, stud12, stud13, stud14, stud15)
-def main():
-    for student in group_x.count_highest_score():
-        print(student)
+for student in group_x.count_highest_score():
+    print(student)
