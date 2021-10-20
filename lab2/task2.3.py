@@ -1,5 +1,4 @@
 from operator import methodcaller
-
 class Student:
     surname_and_name = []
     def __init__(self, name, surname, record_book_number, grades):
@@ -32,10 +31,6 @@ class Group:
     def count_highest_score(self):
         top_students = sorted(self.students, key = methodcaller('count_average_grade'), reverse = 1)
         return top_students[:5]
-
-    
-    
-
 
 stud1 = Student('Ivan', 'Klapatiuk', 1, [10, 11, 11, 10, 12, 9, 11, 9])
 stud2 = Student('Yevhenii', 'Adamchenko', 2, [11, 8, 10, 11, 11, 9, 10, 12])
