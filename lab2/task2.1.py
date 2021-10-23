@@ -1,6 +1,3 @@
-from posixpath import isabs
-
-
 class Product:
     def __init__(self, name_of_product, price, dimension, description):
         if isinstance(name_of_product, str) and isinstance(price, (float, int)) and isinstance(dimension, str) and isinstance(description, str):
