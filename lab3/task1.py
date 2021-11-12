@@ -94,15 +94,24 @@ class regular_ticket:   #superclass
 
 class advance_ticket(regular_ticket):   #derived class
     def __init__(self, customer, event_name, price, event_date):
-        super().__init__(customer, event_name, round(price*0.6, 1), event_date)
+        super().__init__(customer, event_name, price, event_date)
+@property
+def price(self):
+    return self.price * 0.6
 
 class late_ticket(regular_ticket):  #derived class
     def __init__(self, customer, event_name, price, event_date):
         super().__init__(customer, event_name, round(price*1.1, 1), event_date)
+@property
+def price(self):
+    return self.price * 1.1
 
 class student_ticket(regular_ticket):   #derived class
     def __init__(self, customer, event_name, price, event_date):
         super().__init__(customer, event_name, round(price*0.5, 1), event_date)
+@property
+def price(self):
+    return self.price * 0.5
 
 def main():
     print(regular_ticket.create_ticket("order.json"))
