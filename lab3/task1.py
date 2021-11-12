@@ -3,10 +3,13 @@ import json
 import os
 from datetime import datetime
 
-class regular_ticket:   #superclass
+discount_40_perc = 0.6
+student_discount = 0.5
+late_price = 1.1
+class Regular_ticket:   #superclass
     def __init__(self, customer, event_name, price, event_date):
         self.ticket_number = self.generate_number()
-        self.price = price
+        self.__price = price
         self.event_name = event_name
         self.event_date = event_date
         self.customer = customer
@@ -42,19 +45,19 @@ class regular_ticket:   #superclass
         if 'student' in input:
             student = input['student']
         file.close()
-        return regular_ticket.generate_ticket(customer, event_name, event_date, general_price, student)
+        return Regular_ticket.generate_ticket(customer, event_name, event_date, general_price, student)
 
     def generate_ticket(customer, event_name, event_date, general_price, student = False):
         if not isinstance(customer, str) and not isinstance(event_name, str) and not isinstance(event_date, str) and not isinstance(general_price, int) and not isinstance(student, bool):
             raise TypeError("wrong types of data")
         if student:
-            return student_ticket(customer, event_name, general_price, event_date)
-        elif regular_ticket.days_to_event(event_date) >= 60:
-            return advance_ticket(customer, event_name, general_price, event_date)
+            return Student_ticket(customer, event_name, general_price, event_date)
+        elif Regular_ticket.days_to_event(event_date) >= 60:
+            return Advance_ticket(customer, event_name, general_price, event_date)
         else:
-            return late_ticket(customer, event_name, general_price, event_date)
+            return Late_ticket(customer, event_name, general_price, event_date)
     def __str__(self):
-        return f"{self.ticket_number}, {self.price}"
+        return f"{self.ticket_number}, {self.__price}"
 
     @property
     def ticket_number(self):
@@ -92,28 +95,37 @@ class regular_ticket:   #superclass
             raise ValueError("Wrong format of date")
         return abs((second - first).days)
 
-class advance_ticket(regular_ticket):   #derived class
+class Advance_ticket(Regular_ticket):   #derived class
     def __init__(self, customer, event_name, price, event_date):
         super().__init__(customer, event_name, price, event_date)
-@property
-def price(self):
-    return self.price * 0.6
+    @property
+    def price(self):
+        return self.__price * discount_40_perc
+    @price.setter
+    def price(self, price):
+        self.__price = price
 
-class late_ticket(regular_ticket):  #derived class
+class Late_ticket(Regular_ticket):  #derived class
     def __init__(self, customer, event_name, price, event_date):
         super().__init__(customer, event_name, price, event_date)
-@property
-def price(self):
-    return self.price * 1.1
+    @property
+    def price(self):
+        return self.__price * late_price
+    @price.setter
+    def price(self, price):
+        self.__price = price
 
-class student_ticket(regular_ticket):   #derived class
+class Student_ticket(Regular_ticket):   #derived class
     def __init__(self, customer, event_name, price, event_date):
         super().__init__(customer, event_name, price, event_date)
-@property
-def price(self):
-    return self.price * 0.5
+    @property
+    def price(self):
+        return self.__price * discount_40_perc
+    @price.setter
+    def price(self, price):
+        self.__price = price
 
 def main():
-    print(regular_ticket.create_ticket("order.json"))
+    print(Regular_ticket.create_ticket("order.json"))
     #print(regular_ticket.ticket(''))
 main()
