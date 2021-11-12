@@ -1,23 +1,55 @@
-from fractions import Fraction
+from math import gcd
 class Rational:
-    def init(self, numerator = 1, denominator = 1):
-        self.__numerator = numerator
-        self.__denominator = denominator
-
-        if isinstance(self.__numerator, int) and isinstance(self.__denominator, int):
-            try:
-                action = Fraction(self.__numerator, self.__denominator)
-            except ZeroDivisionError: quit("denominator != 0")
+    def __init__(self, numerator = 1, denominator = 1):
+        if isinstance(numerator, int) and isinstance(denominator, int):
+            if denominator:
+                self.__numerator = numerator // gcd(numerator, denominator)
+                self.__denominator = denominator // gcd(numerator, denominator)
+            else:
+                raise ZeroDivisionError("Zero division")
         else:
-            quit("error")
+            raise TypeError("Uncorrect type")
 
-    def oper(self):
-        return Fraction(self.__numerator, self.__denominator)
+    def get_float(self):
+        return self.__numerator/self.__denominator
 
-    def calculate(self):
-        return self.__numerator / self.__denominator
+    def get_simple(self):
+        return f'{self.__numerator}/{self.__denominator}'
 
+    def __add__(self, other):
+        if not isinstance(other, Rational):
+            raise TypeError("Rat type only")
+        numerator = self.__numerator*other.__denominator + self.__denominator*other.__numerator
+        denominator = self.__denominator*other.__denominator
+        return Rational(numerator, denominator)
+        
+    def __sub__(self, other):
+        if not isinstance(other, Rational):
+            raise TypeError("Rat type only")
+        numerator = self.__numerator*other.__denominator - self.__denominator*other.__numerator
+        denominator = self.__denominator*other.__denominator
+        return Rational(numerator, denominator)
 
-object = Rational()
-print(object.oper())
-print(object.calculate())
+    def __mul__(self, other):
+        if not isinstance(other, Rational):
+            raise TypeError("Rat type only")
+        denominator = int(self.__denominator * other.__denominator)
+        numerator = int(self.__numerator * other.__numerator)
+        return Rational(numerator, denominator)
+
+    def __truediv__(self, other):
+        if not isinstance(other, Rational):
+            raise TypeError("Rat type only")
+        denominator = int(self.__denominator * other.__numerator)
+        numerator = int(self.__numerator * other.__denominator)
+        return Rational(numerator, denominator)
+
+def main():
+    a = Rational(3, 4)
+    b = Rational(2, 3)
+    print('Add: ', (a + b).get_simple())
+    print('Sub: ', (a - b).get_simple())
+    print('Mul: ', (a * b).get_simple())
+    print('Div: ', (a / b).get_simple())
+
+main()
