@@ -1,4 +1,4 @@
-class BINARYTREE:
+class Binary_Tree:
     # initialization of tree, required checkings
     def __init__(self, code, price):
         self.left = None
@@ -17,12 +17,12 @@ class BINARYTREE:
                 raise ValueError("incorrect data")
             if code < self.code:
                 if self.left is None:
-                    self.left = BINARYTREE(code, price)
+                    self.left = Binary_Tree(code, price)
                 else:
                     self.left.get_data(code, price)
             elif code > self.code:
                 if self.right is None:
-                    self.right = BINARYTREE(code, price)
+                    self.right = Binary_Tree(code, price)
                 else:
                     self.right.get_data(code, price)
         else:
@@ -46,7 +46,7 @@ class BINARYTREE:
         return final_price
 
 
-object = BINARYTREE(1, 46)
+object = Binary_Tree(1, 46)
 object.get_data(2, 54)
 object.get_data(3, 46)
 object.get_data(4, 300)
