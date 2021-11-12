@@ -47,7 +47,7 @@ class regular_ticket:   #superclass
     def generate_ticket(customer, event_name, event_date, general_price, student = False):
         if not isinstance(customer, str) and not isinstance(event_name, str) and not isinstance(event_date, str) and not isinstance(general_price, int) and not isinstance(student, bool):
             raise TypeError("wrong types of data")
-        if student == True:
+        if student:
             return student_ticket(customer, event_name, general_price, event_date)
         elif regular_ticket.days_to_event(event_date) >= 60:
             return advance_ticket(customer, event_name, general_price, event_date)
@@ -106,5 +106,5 @@ class student_ticket(regular_ticket):   #derived class
 
 def main():
     print(regular_ticket.create_ticket("order.json"))
-    #print(regular_ticket.ticket('11122021-174722912309'))
+    #print(regular_ticket.ticket(''))
 main()
