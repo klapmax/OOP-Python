@@ -13,14 +13,14 @@ class regular_ticket:   #superclass
         self.ticket()
 
     def ticket(self):
-        file = open(self.ticket_number + ".json", "w")
+        file = open(self.ticket_number + '.json', "w")
         json.dump(self.__dict__, file, indent = 2)
         file.close()
 
     def get_ticket(file_name):
-        if not os.path.exists(file_name + ".json"):
+        if not os.path.exists(file_name + '.json'):
             raise FileNotFoundError
-        file = open(file_name + ".json", "r")
+        file = open(file_name + '.json', "r")
         input = json.load(file)
         customer = input['customer']
         price = input['price']
@@ -54,7 +54,7 @@ class regular_ticket:   #superclass
         else:
             return late_ticket(customer, event_name, general_price, event_date)
     def __str__(self):
-        return f"{self.ticket_number} {self.price}"
+        return f"{self.ticket_number}, {self.price}"
 
     @property
     def ticket_number(self):
@@ -82,7 +82,7 @@ class regular_ticket:   #superclass
         second = real_time.second
         mlsec = real_time.microsecond
         time.sleep(0.0025)
-        return f"Ticket number: {month}{day}{year}-{hour}{minute}{second}{mlsec}"
+        return f"{month}{day}{year}-{hour}{minute}{second}{mlsec}"
 
     def days_to_event(event_date):
         try:
@@ -106,5 +106,5 @@ class student_ticket(regular_ticket):   #derived class
 
 def main():
     print(regular_ticket.create_ticket("order.json"))
-    #print(regular_ticket.ticket(''))
+    #print(regular_ticket.ticket('11122021-174722912309'))
 main()
