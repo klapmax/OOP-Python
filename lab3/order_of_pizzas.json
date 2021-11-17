@@ -1,0 +1,12 @@
+{
+   "list_of_ingredients": {
+      "corn": 10,
+      "pineapples": 10
+   },
+   "name_of_pizza": "Margherita",
+   "price": 170,
+   "description": [
+      "cheese",
+      "tomato"
+   ]
+}

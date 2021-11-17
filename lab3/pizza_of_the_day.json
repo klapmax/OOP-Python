@@ -1,0 +1,62 @@
+{
+  "Monday": {
+    "pizza": "Margherita",
+    "cost": 150,
+    "ingredients": [
+      "cheese",
+      "tomato"
+    ]
+  },
+  "Tuesday": {
+    "pizza": "Hawaiian",
+    "cost": 250,
+    "ingredients": [
+      "pineapples",
+      "corn",
+      "chicken",
+      "cheese"
+    ]
+  },
+  "Wednesday": {
+    "pizza": "Papperoni",
+    "cost": 199,
+    "ingredients": [
+      "salami",
+      "cheese"
+    ]
+  },
+  "Thursday": {
+    "pizza": "Vegetarian",
+    "cost": 100,
+    "ingredients": [
+      "tomato",
+      "pepper",
+      "olive"
+    ]
+  },
+  "Friday": {
+    "pizza": "Cheese",
+    "cost": 200,
+    "ingredients": [
+      "cheese"
+    ]
+  },
+  "Saturday": {
+    "pizza": "Seafood",
+    "cost": 299,
+    "ingredients": [
+      "squid",
+      "shrimp",
+      "cheese"
+    ]
+  },
+  "Sunday": {
+    "pizza": "Bianca",
+    "cost": 180,
+    "ingredients": [
+      "cheese",
+      "mushrooms",
+      "ham"
+    ]
+  }
+}
