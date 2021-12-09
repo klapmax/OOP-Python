@@ -74,10 +74,23 @@ class Rational:
             raise TypeError("Rationals only!")
         return self.__numerator/self.__denominator != other.__numerator/other.__denominator
         
+    def __iadd__(self,other):      
+        if not isinstance(other, Rational):
+            raise TypeError("Rationals only!")
+        self.numerator = self.__numerator * other.__denominator + other.__numerator * self.__denominator
+        self.__denominator = self.__denominator * other.__denominator
+        return self
+
+    def __isub__(self,other):     
+        if not isinstance(other, Rational):
+            raise TypeError("Rationals only!") 
+        self.__numerator  = self.__numerator * other.__denominator - other.__numerator * self.__denominator
+        self.__denominator = self.__denominator*other.__denominator
+        return self
 
 def main():
-    a = Rational(5, 8)
-    b = Rational(5, 8)
+    a = Rational(7, 19)
+    b = Rational(5, 13)
     print('Addition: ', (a + b).get_simple())
     print('Substraction: ', (a - b).get_simple())
     print('Multiplication: ', (a * b).get_simple())
