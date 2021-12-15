@@ -10,80 +10,77 @@ class Rational:
         else:
             raise TypeError("Incorrect type!")
 
-    def get_float(self):
-        return self.__numerator/self.__denominator
-
     def get_simple(self):
         return f'{self.__numerator}/{self.__denominator}'
 
     def __add__(self, other):
         if not isinstance(other, Rational):
-            raise TypeError("Ratoinals only!")
+            return NotImplemented
         numerator = self.__numerator * other.__denominator + self.__denominator * other.__numerator
         denominator = self.__denominator * other.__denominator
         return Rational(numerator, denominator)
         
     def __sub__(self, other):
         if not isinstance(other, Rational):
-            raise TypeError("Ratoinals only!")
+            return NotImplemented
         numerator = self.__numerator * other.__denominator - self.__denominator * other.__numerator
         denominator = self.__denominator * other.__denominator
         return Rational(numerator, denominator)
 
     def __mul__(self, other):
         if not isinstance(other, Rational):
-            raise TypeError("Ratoinals only!")
+            return NotImplemented
         denominator = int(self.__denominator * other.__denominator)
         numerator = int(self.__numerator * other.__numerator)
         return Rational(numerator, denominator)
 
     def __truediv__(self, other):
         if not isinstance(other, Rational):
-            raise TypeError("Ratoinals only!")
+            return NotImplemented
         denominator = int(self.__denominator * other.__numerator)
         numerator = int(self.__numerator * other.__denominator)
         return Rational(numerator, denominator)
     
     def __gt__(self, other):
         if not isinstance(other, Rational):
-            raise TypeError("Rationals only!")
+            return NotImplemented
         return self.__numerator * other.__denominator > self.__denominator * other.__numerator
 
     def __lt__(self, other):
         if not isinstance(other, Rational):
-            raise TypeError("Rationals only!")
+            return NotImplemented
         return self.__numerator * other.__denominator < self.__denominator * other.__numerator
     
     def __ge__(self, other):
         if not isinstance(other, Rational):
-            raise TypeError("Rationals only!")
+            return NotImplemented
         return self.__numerator/self.__denominator >= other.__numerator/other.__denominator
 
     def __le__(self, other):
         if not isinstance(other, Rational):
-            raise TypeError("Rationals only!")
+            return NotImplemented
         return self.__numerator/self.__denominator <= other.__numerator/other.__denominator
     
     def __eq__(self, other):
         if not isinstance(other, Rational):
-            raise TypeError("Rationals only!")
+            return NotImplemented
         return self.__numerator/self.__denominator == other.__numerator/other.__denominator
     
     def __ne__(self, other):
         if not isinstance(other, Rational):
-            raise TypeError("Rationals only!")
+            return NotImplemented
         return self.__numerator/self.__denominator != other.__numerator/other.__denominator
         
     def __iadd__(self,other):      
         if not isinstance(other, Rational):
-            raise TypeError("Rationals only!")
+            return NotImplemented
         self.numerator = self.__numerator * other.__denominator + other.__numerator * self.__denominator
         self.__denominator = self.__denominator * other.__denominator
         return self
 
     def __isub__(self,other):     
         if not isinstance(other, Rational):
-            raise TypeError("Rationals only!") 
+            return NotImplemented
         self.__numerator  = self.__numerator * other.__denominator - other.__numerator * self.__denominator
         self.__denominator = self.__denominator*other.__denominator
         return self
